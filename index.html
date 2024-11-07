@@ -1,0 +1,176 @@
+<main class="main-container">
+  <div class="text text--left">Specchio, specchio delle mie brame...</div>
+  <div class="items-container">
+    <div class="item item--girl">
+      <div class="item__screen item__screen--full"></div>
+      <div class="item__screen item__screen--clip"></div>
+    </div>
+
+    <div class="item item--forest">
+      <div class="item__screen item__screen--full"></div>
+      <div class="item__screen item__screen--clip"></div>
+    </div>
+  </div>
+  
+  <img class="mirror" src="https://images2.imgbox.com/f5/2e/gzBTKoLY_o.png" alt="mirror"/>
+  
+  <div class="text text--right">chi è la più bella del reame?</div>
+</main>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body * {
+  box-sizing: border-box;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: radial-gradient(circle, rgba(78, 78, 78, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  padding: 2vw;
+}
+
+.items-container {
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+  height: 60vh;
+  width: 45vw;
+  max-width: 500px;
+  max-height: 600px;
+  background-color: #202938;
+}
+
+.items-container:hover .item--forest {
+  opacity: 1;
+}
+
+.items-container:hover .item--forest .item__screen--full {
+  transform: scale(1);
+}
+
+.items-container:hover .item--girl {
+  opacity: 0;
+}
+
+.items-container:hover .item--girl .item__screen--full {
+  transform: scale(1.05);
+}
+
+.item,
+.item__screen {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.item {
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.4s;
+}
+
+.item:first-child {
+  opacity: 1;
+  z-index: 100;
+}
+
+.item__screen {
+  background-repeat: no-repeat;
+  background-size: 110%; /* Riduzione delle immagini */
+  background-position: center;
+}
+
+.item__screen--full {
+  opacity: 0.6;
+  transition: transform 1.8s;
+}
+
+.item__screen--clip {
+  clip-path: polygon(50% 0%, 20% 100%, 80% 100%);
+}
+
+.item--forest .item__screen {
+  background-image: url('https://www.scillacariddirentalboat.it/wp-content/uploads/2024/11/gleb-mishin-7xRYtIvtTvw-unsplash-scaled.jpg');
+}
+
+.item--girl .item__screen {
+  background-image: url('https://www.scillacariddirentalboat.it/wp-content/uploads/2024/11/WhatsApp-Image-2024-08-15-at-15.42.27-6.jpeg');
+}
+
+.item--girl .item__screen--full {
+  transform: scale(1);
+}
+
+.item--forest .item__screen--full {
+  transform: scale(1.05);
+}
+
+.mirror {
+  position: absolute;
+  pointer-events: none;
+  z-index: 101;
+  width: 45vw;
+  max-width: 500px;
+  height: 60vh;
+  max-height: 600px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: brightness(80%);
+}
+
+.text {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: 4vw;
+  max-font-size: 42px;
+  opacity: 0;
+  width: 90%;
+}
+
+.text--left {
+  animation: bluryText 2s linear 1s forwards;
+  align-self: flex-start;
+  margin: 24px;
+}
+
+.text--right {
+  animation: bluryText 2s linear 2.5s forwards;
+  align-self: flex-end;
+  margin: 24px;
+  text-align: right;
+}
+
+@-webkit-keyframes bluryText {
+  0% {
+    -webkit-filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .items-container,
+  .mirror {
+    width: 80vw;
+    height: 50vh;
+  }
+
+  .text {
+    font-size: 6vw;
+  }
+}
+</style>
